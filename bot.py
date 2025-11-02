@@ -187,6 +187,11 @@ async def handle_callback(query: types.CallbackQuery):
             pass
 
 if __name__ == "__main__":
-    import uvicorn
-    # Запуск polling (подходит для Render/Railway как простой способ)
-    uvicorn.run("bot:dp", host="0.0.0.0", port=int(os.getenv("PORT", 8000)))
+    import asyncio
+
+    async def main():
+        await dp.start_polling(bot)
+
+    asyncio.run(main())
+ 
+    
